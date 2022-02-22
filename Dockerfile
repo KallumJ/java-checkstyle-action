@@ -21,4 +21,4 @@ COPY google_checks.xml /app/google_checks.xml
 
 RUN chmod +x /app/checkstyle.jar
 WORKDIR /app/
-CMD java -jar checkstyle.jar /target/* -c sun_checks.xml
+CMD java -jar checkstyle-9.3-all.jar /target/* -c sun_checks.xml
