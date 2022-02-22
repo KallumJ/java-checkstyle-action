@@ -13,16 +13,11 @@ RUN apk add --no-cache \
 RUN mkdir /target/
 COPY * /target/
 
-RUN curl -LJO -o checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.3/checkstyle-9.3-all.jar
-RUN wget -O sun_checks.xml https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/sun_checks.xml
-RUN wget -O google_checks.xml https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml
-
 RUN mkdir /app/
 
-RUN cp checkstyle.jar /app/checkstyle.jar
-RUN cp sun_checks.xml /app/sun_checks.xml
-
-RUN cp google_checks.xml /app/google_checks.xml
+COPY checkstyle-9.3-all.jar /app/checkstyle.jar
+COPY sun_checks.xml /app/sun_checks.xml
+COPY google_checks.xml /app/google_checks.xml
 
 RUN chmod +x /app/checkstyle.jar
 WORKDIR /app/
