@@ -8,5 +8,5 @@ RUN apk add --no-cache \
     openjdk17-jre-headless
 
 RUN git clone https://github.com/KallumJ/java-checkstyle-action.git
+RUN echo "test"
 
-ENTRYPOINT "action.sh"
