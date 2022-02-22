@@ -4,10 +4,9 @@ RUN apk update
 RUN apk add --no-cache \
     bash \
     wget \
+    git \
     openjdk17-jre-headless
 
-COPY action.sh /action.sh
-
-RUN chmod +x /action.sh
+RUN git clone https://github.com/KallumJ/java-checkstyle-action.git
 
 ENTRYPOINT "action.sh"
