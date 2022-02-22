@@ -1,0 +1,13 @@
+on: [push]
+
+jobs:
+  checkstyle:
+    runs-on: ubuntu-latest
+    name: A job to run Java checkstyle
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: "java-checkstyle-action"
+      - name: Hello world action step
+        uses: ./ # Uses an action in the root directory
