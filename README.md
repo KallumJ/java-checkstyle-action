@@ -1,0 +1,1 @@
+A GitHub Action to run Java Checkstyle on Java repositories
