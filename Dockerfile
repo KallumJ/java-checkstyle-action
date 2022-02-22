@@ -21,5 +21,4 @@ RUN cp checkstyle-9.3-all.jar /app/
 RUN cp sun_checks.xml /app/
 
 RUN chmod +x /app/checkstyle-9.3-all.jar
-WORKDIR /app/
-CMD java -jar checkstyle-9.3-all.jar /target/* -c sun_checks.xml
+CMD java -jar /app/checkstyle-9.3-all.jar /target/* -c /app/sun_checks.xml
