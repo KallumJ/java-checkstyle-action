@@ -2,19 +2,28 @@ FROM alpine:latest
 
 LABEL description="Java Checkstyle Github Action"
 
-RUN adduser -u 2048 /bin/sh -D user
-
 RUN apk update
 RUN apk add --no-cache \
-    wget \
-    openjdk17-jre-headless
+  bash \
+  ca-certificates \
+  curl \
+  jq \
+  openjdk17-jre-headless
 
-# Copies your code file  repository to the filesystem
-RUN mkdir /opt/checkstyle
-RUN chown user /opt/checkstyle
+RUN mkdir /target/
+COPY * /target/
 
-COPY entrypoint.sh /opt/checkstyle/entrypoint.sh
+RUN curl -LJO -o checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.3/checkstyle-9.3-all.jar
+RUN wget -O sun_checks.xml https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/sun_checks.xml
+# RUN wget -O google_checks.xml https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml
 
-# file to execute when the docker container starts up
-USER user
-CMD ./opt/checkstyle/entrypoint.sh
+RUN mkdir /app/
+
+COPY checkstyle.jar /app/checkstyle.jar
+COPY sun_checks.xml /app/sun_checks.xml
+
+# COPY google_checks.xml /app/google_checks.xml
+
+RUN chmod +x /app/checkstyle.jar
+WORKDIR /app/
+CMD java -jar checkstyle.jar /target/* -c sun_checks.xml
