@@ -15,10 +15,11 @@ COPY * /target/
 
 RUN mkdir /app/
 
-COPY checkstyle-9.3-all.jar /app/checkstyle.jar
-COPY sun_checks.xml /app/sun_checks.xml
-COPY google_checks.xml /app/google_checks.xml
+RUN curl -LJO https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.3/checkstyle-9.3-all.jar
+RUN curl -LJO https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/sun_checks.xml
+RUN cp checkstyle-9.3-all.jar /app/
+RUN cp sun_checks.xml /app/
 
-RUN chmod +x /app/checkstyle.jar
+RUN chmod +x /app/checkstyle-9.3-all.jar
 WORKDIR /app/
 CMD java -jar checkstyle-9.3-all.jar /target/* -c sun_checks.xml
