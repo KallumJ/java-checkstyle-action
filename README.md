@@ -14,6 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run Java Checkstyle
-        uses: kallumj/java-checkstyle-action@v8
+        uses: kallumj/java-checkstyle-action@v13
 ```
 
