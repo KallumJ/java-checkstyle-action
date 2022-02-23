@@ -15,6 +15,7 @@ RUN mkdir /app/
 
 # Copy script from repo into container
 COPY entrypoint.sh /app/
+COPY stylefile.xml /app/
 
 # Make it executable
 RUN chmod +x /app/entrypoint.sh
