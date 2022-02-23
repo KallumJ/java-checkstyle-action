@@ -4,6 +4,9 @@ inputs:
   workdir:
     description: "The directory to scan"
     default: "."
+  stylefile:
+    description: "The stylefile to use, either `sun`, or `google`"
+    default: "sun"
 runs:
   using: "docker"
   image: "Dockerfile"
