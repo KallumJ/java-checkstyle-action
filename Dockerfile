@@ -10,9 +10,6 @@ RUN apk add --no-cache \
   jq \
   openjdk17-jre-headless
 
-RUN mkdir /target/
-COPY * /target/
-
 RUN mkdir /app/
 
 RUN curl -LJO https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.3/checkstyle-9.3-all.jar
@@ -21,4 +18,4 @@ RUN cp checkstyle-9.3-all.jar /app/
 RUN cp sun_checks.xml /app/
 
 RUN chmod +x /app/checkstyle-9.3-all.jar
-CMD java -jar /app/checkstyle-9.3-all.jar /target/* -c /app/sun_checks.xml
+CMD java -jar /app/checkstyle-9.3-all.jar "${INPUT_WORKDIR}" -c /app/sun_checks.xml
