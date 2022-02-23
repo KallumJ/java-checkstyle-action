@@ -7,5 +7,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Run Java Checkstyle
         uses: kallumj/java-checkstyle-action@v13
