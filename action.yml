@@ -1,5 +1,9 @@
 name: 'Java Checkstyle'
 description: 'An action to run the Checkstyle utility on your Java project'
+inputs:
+  workdir:
+    description: "The directory to scan"
+    default: "."
 runs:
   using: "docker"
   image: "Dockerfile"
