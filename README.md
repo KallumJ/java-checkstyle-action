@@ -15,14 +15,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Run Java Checkstyle
         uses: kallumj/java-checkstyle-action@v8
-        with:
-            stylefile: "sun"
 ```
 
-## Inputs
-
-### `workdir`
-The relative path to the directory to work from
-
-### `stylefile`
-The stylefile to use with checkstyle, either `sun`, or `google`. Sun by default. 
