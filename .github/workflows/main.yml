@@ -6,6 +6,6 @@ jobs:
     name: A job to run Java checkstyle
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Hello world action step
         uses: kallumj/java-checkstyle-action@v1
